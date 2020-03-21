@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Template project for Alexa Skills using the Alexa Skills Kit SDK",
   "main": "app.js",
+  "scripts": {
+    "test": "mocha test/**/*.spec.js"
+  },
   "keywords": [
     "alexa",
     "amazon",
@@ -13,5 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "ask-sdk": "^2.7.0"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.1"
   }
 }
