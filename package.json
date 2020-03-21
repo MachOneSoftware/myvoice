@@ -1,0 +1,17 @@
+{
+  "name": "alexa-skill-template",
+  "version": "1.0.0",
+  "description": "Template project for Alexa Skills using the Alexa Skills Kit SDK",
+  "main": "app.js",
+  "keywords": [
+    "alexa",
+    "amazon",
+    "skill",
+    "template"
+  ],
+  "author": "Mach One Software",
+  "license": "ISC",
+  "dependencies": {
+    "ask-sdk": "^2.7.0"
+  }
+}
