@@ -1,8 +1,7 @@
+const { canHandleIntent } = require("./util");
+
 module.exports = {
-    canHandle(handlerInput) {
-        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
-    },
+    canHandle: canHandleIntent(__filename),
 
     handle(handlerInput) {
         const speechText = 'Hello World!';

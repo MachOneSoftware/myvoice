@@ -1,8 +1,7 @@
+const { canHandleIntent } = require("./util");
+
 module.exports = {
-    canHandle(handlerInput) {
-        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
-    },
+    canHandle: canHandleIntent(__filename, true),
 
     handle(handlerInput) {
         const speechText = 'You can say hello to me!';
