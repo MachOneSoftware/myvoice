@@ -31,6 +31,13 @@ describe("Intents index", function () {
                         .canHandle(input)
                     );
                 });
+                it("ListIntent", () => {
+                    setName("ListIntent");
+                    assert.isTrue(handlers
+                        .find(h => h.intent === "List")
+                        .canHandle(input)
+                    );
+                });
                 it("AMAZON.CancelIntent", () => {
                     setName("AMAZON.CancelIntent");
                     assert.isTrue(handlers
@@ -167,6 +174,13 @@ describe("Intents index", function () {
                         .canHandle(input)
                     );
                 });
+                it("ListIntent", () => {
+                    setName("ListIntent");
+                    assert.isFalse(handlers
+                        .find(h => h.intent === "List")
+                        .canHandle(input)
+                    );
+                });
                 it("AMAZON.CancelIntent", () => {
                     setName("AMAZON.CancelIntent");
                     assert.isFalse(handlers
@@ -296,6 +310,12 @@ describe("Intents index", function () {
                 it("HelloWorldIntent", () => {
                     assert.isFalse(handlers
                         .find(h => h.intent === "HelloWorld")
+                        .canHandle(input)
+                    );
+                });
+                it("ListIntent", () => {
+                    assert.isFalse(handlers
+                        .find(h => h.intent === "List")
                         .canHandle(input)
                     );
                 });

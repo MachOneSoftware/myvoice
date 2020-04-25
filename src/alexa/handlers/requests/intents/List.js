@@ -33,20 +33,20 @@ module.exports = {
         const myList = await listClient.getList(list.listId, "active");
 
         // Find an item
-        const listItem = myList.items.find(i => i.value === "Pet the cats");
+        let listItem = myList.items.find(i => i.value === "Pet the cats");
+
+        // Add to the list. Status is "active" or "completed".
+        if (!listItem)
+            listItem = await listClient.createListItem(list.listId, { status: "active", value: "Design cool Alexa Skill" });
 
         // Update/Complete an item
         const updatedListItem = await listClient.updateListItem(list.listId, listItem.id, { status: "completed", value: "Pet the dogs", version: listItem.version });
 
-        // Add to the list. Status is "active" or "completed".
-        const newListItem = await listClient.createListItem(list.listId, { status: "active", value: "Design cool Alexa Skill" });
-
         // Delete list item
-        await listClient.deleteListItem(newListItem.id);
+        await listClient.deleteListItem(listItem.id);
 
         // Get list item by ID
-        const myItem = await listClient.getListItem(myList.listId, newListItem.id);
-
+        const myItem = await listClient.getListItem(myList.listId, listItem.id);
 
         const speechText = 'Hello World!';
         return handlerInput.responseBuilder
@@ -67,7 +67,7 @@ function checkListPermission(handlerInput) {
 
     if (!token) {
         return responseBuilder
-            .speak(permissionResponse.list)
+            .speak("Please enable List permissions in the Alexa app.")
             .withAskForPermissionsConsentCard([
                 "read::alexa:household:list",
                 "write::alexa:household:list"
