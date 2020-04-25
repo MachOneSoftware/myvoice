@@ -1,5 +1,5 @@
 module.exports = [
-    require("./LaunchHandler"),
-    require("./SessionEndedHandler"),
+    require("./Launch"),
+    require("./SessionEnded"),
     ...require("./intents")
 ];

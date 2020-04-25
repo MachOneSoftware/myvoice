@@ -1,8 +1,6 @@
 module.exports = {
-    canHandle() {
-        return true;
-    },
-    
+    canHandle: () => true,
+
     handle(handlerInput, error) {
         console.log(`Error handled: ${error.message}`);
 
