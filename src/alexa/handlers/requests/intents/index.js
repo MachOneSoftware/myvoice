@@ -24,18 +24,19 @@ const canHandleIntent = (fileName, isAmazonIntent) =>
 const typeOf = (obj, type) => typeof obj === type;
 
 function importDirectory(dir) {
-    const req = [];
+    let req = [];
     const files = fs.readdirSync(dir);
-    for (let f in files) {
-        const relPath = path.join(dir, f);
-        const stats = fs.lstatSync(relPath);
+    console.log(files)
+    for (let f of files) {
+        if (f.startsWith("_") || f === "index.js") continue;
 
-        if (stats.isDirectory() && !relPath.startsWith("_")) {
-            // Non-ignored directory
-            req = req.concat(importDirectory(relPath));
-        } else if (stats.isFile() && !relPath.startsWith("_") && path.basename(relPath) !== path.basename(__filename) && [".js", ".ts"].includes(path.extname(relPath))) {
-            // Non-ignored file, is not this file, is a JavaScript or TypeScript file
-            const module = require(`./${relPath}`);
+        const fullPath = path.join(dir, f);
+        const stats = fs.lstatSync(fullPath);
+
+        if (stats.isDirectory()) {
+            req = req.concat(importDirectory(fullPath));
+        } else if (stats.isFile() && [".js", ".ts"].includes(path.extname(f))) {
+            const module = require(fullPath);
             if (typeOf(module, "object") && module.handle && typeOf(module.handle, "function")) {
                 if (!module.canHandle) {
                     if (dir === "built-in")
@@ -54,4 +55,4 @@ function importDirectory(dir) {
     return req;
 }
 
-module.exports = importDirectory("./");
+module.exports = importDirectory(__dirname);
