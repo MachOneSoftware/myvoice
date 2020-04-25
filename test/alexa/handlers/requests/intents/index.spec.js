@@ -6,7 +6,7 @@ describe("Intents index", function () {
     it("exports intent handlers", () => {
         assert.exists(handlers, "Index did not return anything");
         assert.isArray(handlers, "Index did not return an array of handlers");
-        assert.lengthOf(handlers, 18, "Array of handlers was not the expected length");
+        assert.lengthOf(handlers, 19, "Array of handlers was not the expected length");
 
         for (let h of handlers) {
             assert.exists(h.handle, `"${h.intent}" handler does not return a handle property`);
