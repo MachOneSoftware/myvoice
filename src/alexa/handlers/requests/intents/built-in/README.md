@@ -1,0 +1,3 @@
+# Standard Built-in Intent Handlers
+
+All the intent handlers in this folder are built-in intents provided by Amazon. Each file provides information about the intent it handles, obtained from [this page](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html) on April 25, 2020. If you are not implementing a given intent in your skill, you may either delete the file or prepend its name with an underscore, as in: "_UnusedIntent.js".
