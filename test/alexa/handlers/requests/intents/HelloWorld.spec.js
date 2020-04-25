@@ -1,4 +1,6 @@
-const helloWorld = require("../../../../../src/alexa/handlers/requests/intents/HelloWorld");
-describe("CancelStopIntent", function () {
-    it("handles HelloWorldIntent");
+const { exportsHandlerTest, getFile } = require("./util");
+const handler = getFile(__filename);
+
+describe("HelloWorldIntent", function () {
+    it("exports handler", exportsHandlerTest(handler));
 });
