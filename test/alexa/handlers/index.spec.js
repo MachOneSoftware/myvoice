@@ -1,5 +1,19 @@
-const handlers = require("../../../src/alexa/handlers");
-describe("alexa/handlers/index", function () {
-    it("exports request handlers");
-    it("exports error handlers");
+const { assert } = require("chai");
+const getFile = require("../../getFile");
+const index = getFile(__filename);
+
+describe("handlers/index", () => {
+    describe("exports", () => {
+        it("request handlers", () => {
+            assert.isObject(index);
+            assert.isArray(index.requests);
+            assert.lengthOf(index.requests, 21);
+        });
+
+        it("error handlers", () => {
+            assert.isObject(index);
+            assert.isArray(index.errors);
+            assert.lengthOf(index.errors, 1);
+        });
+    })
 });

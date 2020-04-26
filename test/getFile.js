@@ -1,0 +1,1 @@
+module.exports = (testFilePath) => require(testFilePath.replace("/test/", "/src/").replace(".spec.", "."));

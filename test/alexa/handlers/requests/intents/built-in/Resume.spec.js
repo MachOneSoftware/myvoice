@@ -1,4 +1,5 @@
-const { exportsHandlerTest, getFile } = require("../util");
+const { exportsHandlerTest } = require("../../util");
+const getFile = require("../../../../../getFile");
 const handler = getFile(__filename);
 
 describe("ResumeIntent", function () {
