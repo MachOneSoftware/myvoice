@@ -5,10 +5,10 @@ const handler = getFile(__filename);
 const getTestRequest = require("../getTestRequest");
 
 describe("ListIntent", function () {
-    let input, listClient;
+    let request, input, listClient;
 
     beforeEach(() => {
-        let request = getTestRequest();
+        request = getTestRequest();
         input = request.input, listClient = request.listClient;
     });
 
@@ -22,7 +22,7 @@ describe("ListIntent", function () {
         it("speech response", async () => {
             await handler.handle(input);
             assert.isTrue(input.responseBuilder.speak.calledOnce, "Speak not called once");
-            assert.equal(input.responseBuilder.speak.args[0][0], "Please enable List permissions in the Alexa app.", "Unexpected returned speech");
+            assert.strictEqual(input.responseBuilder.speak.args[0][0], "Please enable List permissions in the Alexa app.", "Unexpected returned speech");
         });
 
         it("card", async () => {
@@ -34,23 +34,29 @@ describe("ListIntent", function () {
         });
     });
 
-    describe("returns hello world", () => {
-        it("speech response", async () => {
+    describe("responds with", () => {
+        it("speech", async () => {
             await handler.handle(input);
             assert.isTrue(input.responseBuilder.speak.calledOnce, "Speak not called once");
-            assert.equal(input.responseBuilder.speak.args[0][0], "Hello World!", "Unexpected returned speech");
+            assert.strictEqual(input.responseBuilder.speak.args[0][0], "Hello World!", "Unexpected returned speech");
         });
 
-        it("card title", async () => {
+        it("simple card title", async () => {
             await handler.handle(input);
             assert.isTrue(input.responseBuilder.withSimpleCard.calledOnce, "withSimpleCard not called once");
-            assert.equal(input.responseBuilder.withSimpleCard.args[0][0], "Hello World", "Unexpected card title");
+            assert.strictEqual(input.responseBuilder.withSimpleCard.args[0][0], "Hello World", "Unexpected card title");
         });
 
-        it("card body", async () => {
+        it("simple card text", async () => {
             await handler.handle(input);
             assert.isTrue(input.responseBuilder.withSimpleCard.calledOnce, "withSimpleCard not called once");
-            assert.equal(input.responseBuilder.withSimpleCard.args[0][1], "Hello World!", "Unexpected card body");
+            assert.strictEqual(input.responseBuilder.withSimpleCard.args[0][1], "Hello World!", "Unexpected card body");
+        });
+
+        it("getResponse", async () => {
+            const response = await handler.handle(input);
+            assert.isTrue(input.responseBuilder.getResponse.calledOnce, "getRepsonse not called once");
+            assert.deepStrictEqual(response, request.response, "Unexpected response");
         });
     });
 
