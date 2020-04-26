@@ -13,6 +13,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Resume
+        // Code to handle resume
+
+        return handlerInput.responseBuilder.getResponse();
     }
 };

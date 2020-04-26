@@ -13,6 +13,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Repeat the last action
+        // Code to handle repeat
+
+        return handlerInput.responseBuilder.getResponse();
     }
 };

@@ -20,6 +20,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Select
+        // Code to handle select
+
+        return handlerInput.responseBuilder.getResponse();
     }
 };

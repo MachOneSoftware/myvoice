@@ -13,6 +13,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Code to enable audio loop
+        // Code to handle loop on
+        
+        return handlerInput.responseBuilder.getResponse();
     }
 };

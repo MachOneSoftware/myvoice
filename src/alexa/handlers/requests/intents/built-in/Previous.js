@@ -13,6 +13,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Code to play the previous track
+        // Code to handle previous
+
+        return handlerInput.responseBuilder.getResponse();
     }
 };

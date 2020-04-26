@@ -13,6 +13,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Code to skip to the next track
+        // Code to skip to handle next
+        
+        return handlerInput.responseBuilder.getResponse();
     }
 };

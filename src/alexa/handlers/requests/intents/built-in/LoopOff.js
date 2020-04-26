@@ -11,6 +11,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Code to disable audio loop
+        // Code to handle loop off
+
+        return handlerInput.responseBuilder.getResponse();
     }
 };

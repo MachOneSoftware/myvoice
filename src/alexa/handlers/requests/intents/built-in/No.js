@@ -9,6 +9,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // No
+        // Code to handle no
+        
+        return handlerInput.responseBuilder.getResponse();
     }
 };

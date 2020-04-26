@@ -13,6 +13,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Start Over
+        // Code to handle start over
+
+        return handlerInput.responseBuilder.getResponse();
     }
 };

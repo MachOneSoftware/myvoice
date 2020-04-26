@@ -10,6 +10,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Yes
+        // Code to handle yes
+
+        return handlerInput.responseBuilder.getResponse();
     }
 };

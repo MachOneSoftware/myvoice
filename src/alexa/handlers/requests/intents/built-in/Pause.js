@@ -12,6 +12,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Code to pause audio
+        // Code to handle pause
+
+        return handlerInput.responseBuilder.getResponse();
     }
 };

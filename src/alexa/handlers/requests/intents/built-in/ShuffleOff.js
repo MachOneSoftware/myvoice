@@ -13,6 +13,8 @@
 
 module.exports = {
     handle(handlerInput) {
-        // Shuffle Off
+        // Code to handle shuffle off
+
+        return handlerInput.responseBuilder.getResponse();
     }
 };
