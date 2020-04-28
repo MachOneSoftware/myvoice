@@ -5,6 +5,6 @@ const index = getFile(__filename);
 describe("requests/index", () => {
     it("exports request handlers", () => {
         assert.isArray(index);
-        assert.lengthOf(index, 22);
+        assert.lengthOf(index, 23);
     });
 });

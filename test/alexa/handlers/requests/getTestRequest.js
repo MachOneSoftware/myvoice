@@ -9,6 +9,7 @@ module.exports = function (requestType, intentName) {
     responseBuilder.reprompt = sinon.fake.returns(responseBuilder);
     responseBuilder.withSimpleCard = sinon.fake.returns(responseBuilder);
     responseBuilder.withStandardCard = sinon.fake.returns(responseBuilder);
+    responseBuilder.withLinkAccountCard = sinon.fake.returns(responseBuilder);
     responseBuilder.withAskForPermissionsConsentCard = sinon.fake.returns(responseBuilder);
     responseBuilder.withShouldEndSession = sinon.fake.returns(responseBuilder);
     responseBuilder.getResponse = sinon.fake.returns(response);
@@ -40,7 +41,7 @@ module.exports = function (requestType, intentName) {
                 getListManagementServiceClient: sinon.fake.returns(listClient)
             },
             requestEnvelope: {
-                context: { System: { apiAccessToken: id } },
+                context: { System: { apiAccessToken: id, user: {} } },
                 request
             },
             responseBuilder

@@ -6,7 +6,7 @@ const getTestRequest = require("../getTestRequest");
 describe("Intents index", function () {
     it("exports intent handlers", () => {
         assert.isArray(handlers, "Index did not return an array of handlers");
-        assert.lengthOf(handlers, 20, "Array of handlers was not the expected length");
+        assert.lengthOf(handlers, 21, "Array of handlers was not the expected length");
 
         for (let h of handlers) {
             assert.isFunction(h.handle, `"${h.intent}" handler handle property is not a function`);
@@ -37,6 +37,14 @@ describe("Intents index", function () {
                     .canHandle(request.input)
                 );
             });
+            it("LinkAccountIntent", () => {
+                const request = getTestRequest("IntentRequest", "LinkAccountIntent");
+                assert.isTrue(handlers
+                    .find(h => h.intent === "LinkAccount")
+                    .canHandle(request.input)
+                );
+            });
+            
             it("AMAZON.CancelIntent", () => {
                 const request = getTestRequest("IntentRequest", "AMAZON.CancelIntent");
                 assert.isTrue(handlers
@@ -181,6 +189,14 @@ describe("Intents index", function () {
                         .canHandle(request.input)
                     );
                 });
+                it("LinkAccountIntent", () => {
+                    const request = getTestRequest("LaunchRequest", "LinkAccountIntent");
+                    assert.isFalse(handlers
+                        .find(h => h.intent === "LinkAccount")
+                        .canHandle(request.input)
+                    );
+                });
+
                 it("AMAZON.CancelIntent", () => {
                     const request = getTestRequest("LaunchRequest", "AMAZON.CancelIntent");
                     assert.isFalse(handlers
@@ -323,6 +339,13 @@ describe("Intents index", function () {
                         .canHandle(input)
                     );
                 });
+                it("LinkAccountIntent", () => {
+                    assert.isFalse(handlers
+                        .find(h => h.intent === "LinkAccount")
+                        .canHandle(input)
+                    );
+                });
+
                 it("AMAZON.CancelIntent", () => {
                     assert.isFalse(handlers
                         .find(h => h.intent === "Cancel")

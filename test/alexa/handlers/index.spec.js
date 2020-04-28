@@ -7,7 +7,7 @@ describe("handlers/index", () => {
         it("request handlers", () => {
             assert.isObject(index);
             assert.isArray(index.requests);
-            assert.lengthOf(index.requests, 22);
+            assert.lengthOf(index.requests, 23);
         });
 
         it("error handlers", () => {
