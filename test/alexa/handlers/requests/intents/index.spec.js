@@ -6,7 +6,7 @@ const getTestRequest = require("../getTestRequest");
 describe("Intents index", function () {
     it("exports intent handlers", () => {
         assert.isArray(handlers, "Index did not return an array of handlers");
-        assert.lengthOf(handlers, 19, "Array of handlers was not the expected length");
+        assert.lengthOf(handlers, 20, "Array of handlers was not the expected length");
 
         for (let h of handlers) {
             assert.isFunction(h.handle, `"${h.intent}" handler handle property is not a function`);
@@ -27,6 +27,13 @@ describe("Intents index", function () {
                 const request = getTestRequest("IntentRequest", "ListIntent");
                 assert.isTrue(handlers
                     .find(h => h.intent === "List")
+                    .canHandle(request.input)
+                );
+            });
+            it("StandardCardIntent", () => {
+                const request = getTestRequest("IntentRequest", "StandardCardIntent");
+                assert.isTrue(handlers
+                    .find(h => h.intent === "StandardCard")
                     .canHandle(request.input)
                 );
             });
@@ -167,6 +174,13 @@ describe("Intents index", function () {
                         .canHandle(request.input)
                     );
                 });
+                it("StandardCardIntent", () => {
+                    const request = getTestRequest("LaunchRequest", "StandardCardIntent");
+                    assert.isFalse(handlers
+                        .find(h => h.intent === "StandardCard")
+                        .canHandle(request.input)
+                    );
+                });
                 it("AMAZON.CancelIntent", () => {
                     const request = getTestRequest("LaunchRequest", "AMAZON.CancelIntent");
                     assert.isFalse(handlers
@@ -300,6 +314,12 @@ describe("Intents index", function () {
                 it("ListIntent", () => {
                     assert.isFalse(handlers
                         .find(h => h.intent === "List")
+                        .canHandle(input)
+                    );
+                });
+                it("StandardCardIntent", () => {
+                    assert.isFalse(handlers
+                        .find(h => h.intent === "StandardCard")
                         .canHandle(input)
                     );
                 });

@@ -8,6 +8,7 @@ module.exports = function (requestType, intentName) {
     responseBuilder.speak = sinon.fake.returns(responseBuilder);
     responseBuilder.reprompt = sinon.fake.returns(responseBuilder);
     responseBuilder.withSimpleCard = sinon.fake.returns(responseBuilder);
+    responseBuilder.withStandardCard = sinon.fake.returns(responseBuilder);
     responseBuilder.withAskForPermissionsConsentCard = sinon.fake.returns(responseBuilder);
     responseBuilder.withShouldEndSession = sinon.fake.returns(responseBuilder);
     responseBuilder.getResponse = sinon.fake.returns(response);

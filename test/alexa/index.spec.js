@@ -21,7 +21,7 @@ describe("alexa/index", function () {
         it("addRequestHandlers called with requests array", () => {
             assert.isTrue(addRequestHandlers.calledOnce, "addRequestHandlers not called once");
             assert.isArray(addRequestHandlers.args[0][0]);
-            assert.lengthOf(addRequestHandlers.args[0][0], 21);
+            assert.lengthOf(addRequestHandlers.args[0][0], 22);
         });
 
         it("addErrorHandlers called with errors array", () => {
