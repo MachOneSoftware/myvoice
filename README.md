@@ -1,6 +1,6 @@
 # MyVoice
 
-## Voice User Interface template for NodeJS
+### Voice User Interface template for NodeJS
 
 This template is a guide to get started with development for Amazon Alexa using the Alexa Skills Kit (ASK). Google Assistant may be added to this later on.
 
